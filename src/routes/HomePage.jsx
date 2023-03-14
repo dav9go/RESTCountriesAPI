@@ -34,45 +34,48 @@ export default function HomePage() {
 
   return (
     <section className="home-page">
-      <section role="search" className="search">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="search-icon"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+      <div className="filters-wrapper">
+        <section role="search" className="search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="search-icon"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="input-field"
+            type="text"
+            placeholder="Search for a country..."
           />
-        </svg>
-        <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="input-field"
-          type="text"
-          placeholder="Search for a country..."
-        />
-      </section>
-      <section className="dropdown-menu-wrapper">
-        <select
-          className="region-select"
-          name="region"
-          id="region"
-          value={filterRegion}
-          onChange={(e) => setFilterRegion(e.target.value)}
-        >
-          <option value="">Filter by Region</option>
-          <option value="africa">Africa</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europe">Europe</option>
-          <option value="oceania">Oceania</option>
-        </select>
-      </section>
+        </section>
+        <section className="dropdown-menu-wrapper">
+          <select
+            className="region-select"
+            name="region"
+            id="region"
+            value={filterRegion}
+            onChange={(e) => setFilterRegion(e.target.value)}
+          >
+            <option value="">Filter by Region</option>
+            <option value="africa">Africa</option>
+            <option value="america">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+            <option value="antarctic">Antarctic</option>
+          </select>
+        </section>
+      </div>
       <section className="items-wrapper">
         {search
           ? localData

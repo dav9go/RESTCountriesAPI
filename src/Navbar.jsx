@@ -1,8 +1,34 @@
+import { useState, useEffect } from "react";
+
 export default function Navbar() {
+  const [theme, setTheme] = useState(false);
+
+  function setLightMode() {
+    document.querySelector("body").setAttribute("data-theme", "light");
+    document.querySelector(".moon").setAttribute("fill", "none");
+  }
+
+  function setDarkMode() {
+    document.querySelector("body").setAttribute("data-theme", "dark");
+    document.querySelector(".moon").setAttribute("fill", "white");
+  }
+
+  function toggleTheme() {
+    if (theme) {
+      setDarkMode();
+    } else {
+      setLightMode();
+    }
+  }
+
+  useEffect(() => {
+    toggleTheme();
+  }, [theme]);
+
   return (
     <nav>
       <h1 className="nav-title">Where in the world?</h1>
-      <div className="nav-dark-mode">
+      <div className="nav-dark-mode" onClick={() => setTheme(!theme)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
